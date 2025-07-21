@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained('customer')->cascadeOnDelete();
-            $table->foreignId('province_id')->constrained('province')->cascadeOnDelete();
+            $table->foreignId('customer_id')->constrained('customers')->cascadeOnDelete();
+            $table->foreignId('province_id')->constrained('provinces')->cascadeOnDelete();
             $table->foreignId('city_id')->constrained('cities')->cascadeOnDelete();
-            $table->foreignId('district_id')->constrained('district')->cascadeOnDelete();
+            $table->foreignId('district_id')->constrained('districts')->cascadeOnDelete();
             $table->string('invoice');
             $table->integer('weight');
             $table->text('address');
