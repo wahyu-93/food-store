@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Customer extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Customer extends Authenticatable
 {
     use HasFactory, SoftDeletes;
 
@@ -16,4 +18,6 @@ class Customer extends Model
         'email',
         'password'
     ];
+
+    protected $hidden = ['password'];
 }
