@@ -17,6 +17,15 @@ class Login extends Component
         ];
     }
 
+    // dijalankan pertama kali ketika form diakses
+    public function mount()
+    {
+        // jika sudah login arah kan ke menu account
+        if(auth()->guard('customer')->check()){
+            return $this->redirect('/account/my-order', navigate:true);
+        };
+    }
+
     public function login()
     {
         // validate the input
