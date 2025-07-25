@@ -50,13 +50,13 @@ class CartResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('customer.name')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('product.name')
+                Tables\Columns\TextColumn::make('product.title')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('qty')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('total')
                     ->money('IDR', locale:'id')
-                    ->formatStateUsing(fn($record) => $record->qry * $record->product->price),
+                    ->getStateUsing(fn($record) => ($record->qty ?? 0) * ($record->product->price ?? 0)),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

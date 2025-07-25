@@ -18,12 +18,24 @@ class Index extends Component
                     ->get();
     }
 
+    protected function getLatestProducts()
+    {
+        //get products
+        return Product::query()
+            ->with(['category', 'ratings.customer'])
+            ->withAvg('ratings', 'rating')
+            ->limit(5)
+            ->orderBy('created_at', 'desc')
+            ->get();
+    }
+
     public function render()
     {
         return view('livewire.web.home.index',[
             'sliders' => Slider::latest()->get(), //sliders
             'categories' => Category::latest()->get(), //categories
             'popularProducts' => $this->getPopularProducts(),
+            'latestProducts'  => $this->getLatestProducts(),
         ]);
     }
 }
