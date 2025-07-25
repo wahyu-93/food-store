@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // route register
 Route::get('/register', Auth\Register::class)->name('register');
@@ -40,3 +40,6 @@ Route::get('/login', Auth\Login::class)->name('login');
         Route::get('/password', Account\Password\Index::class)->name('account.password');
     });
 // });
+
+// homepage
+Route::get('/', Web\Home\Index::class)->name('home');
