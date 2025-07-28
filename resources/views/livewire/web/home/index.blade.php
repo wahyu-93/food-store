@@ -14,6 +14,10 @@ Food Store - Eat Your Favorite Foods
 {{ asset('images/logo.png') }}
 @stop
 
+@push('freCss')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+@endpush
+
 <div>
     <div class="container" style="margin-bottom: 120px">
         
@@ -48,21 +52,30 @@ Food Store - Eat Your Favorite Foods
         </div>
 
         <!-- Categories -->
-        <div class="row justify-content-center mt-4 mb-5">
+        <div class="row justify-content-center mt-4 mb-0">
             <div class="col-md-6">
                 <span class="fs-6 fw-bold">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-box mb-1" viewBox="0 0 16 16">
                         <path
-                            d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z" />
+                            d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5 8 5.961 14.154 3.5zM15 4.239l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z" />
                     </svg>
                     CATEGORIES
                 </span>
                 <hr />
-                <div class="row flex-nowrap overflow-auto scroll-custom">
-                    @foreach ($categories as $category)
-                        <x-cards.category :category="$category" />
-                    @endforeach
+
+                <!-- Swiper container -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($categories as $category)
+                            <div class="swiper-slide">
+                                <x-cards.category :category="$category" />
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <!-- Hilangkan scrollbar (atau pakai kalau mau) -->
+                    <div class="swiper-scrollbar d-none"></div>
                 </div>
             </div>
         </div>
@@ -135,3 +148,22 @@ Food Store - Eat Your Favorite Foods
 
     </div>
 </div>
+
+@push('freJs')
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        new Swiper(".mySwiper", {
+            slidesPerView: 3, // bisa kamu ubah jadi auto kalau mau fleksibel
+            spaceBetween: 20,
+            scrollbar: {
+                el: ".swiper-scrollbar",
+                hide: false,
+            },
+            breakpoints: {
+                640: { slidesPerView: 2 },
+                768: { slidesPerView: 3 },
+                1024: { slidesPerView: 4 },
+            }
+        });
+    </script>
+@endpush

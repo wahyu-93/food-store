@@ -43,3 +43,12 @@ Route::get('/login', Auth\Login::class)->name('login');
 
 // homepage
 Route::get('/', Web\Home\Index::class)->name('home');
+
+// products
+Route::get('/products', Web\Product\Index::class)->name('web.product.index');
+
+// category show
+Route::get('/category/{slug}', Web\Category\Show::class)->name('web.category.show');
+
+// product show
+Route::get('/products/{slug}', Web\Product\Show::class)->name('web.product.show');
