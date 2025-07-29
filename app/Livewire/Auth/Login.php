@@ -40,7 +40,7 @@ class Login extends Component
             session()->flash('success', 'Login Berhasil');
 
             // redirect to the desired page
-            return $this->redirect('/account/my-orders', navigate: true);
+            return $this->redirect(route('account.my-orders.index'), navigate: true);
         }
 
         // flash error message if login fails

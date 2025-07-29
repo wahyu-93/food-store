@@ -38,7 +38,7 @@ class BtnAddToCart extends Component
         session()->flash('success', 'Produck Berhasil Ditambahkan Ke keranjang');
 
         // redirect
-        return $this->redirect(route('cart'),navigate:true);
+        return $this->redirect(route('web.cart.index'),navigate:true);
     }
 
     public function render()

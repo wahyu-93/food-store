@@ -27,7 +27,7 @@ Route::get('/register', Auth\Register::class)->name('register');
 Route::get('/login', Auth\Login::class)->name('login');
 
 // myorder
-// Route::middleware('auth.customer')->group(function(){
+Route::middleware('auth:customer')->group(function(){
     Route::group(['prefix' => 'account'], function(){
         // my-orders
         Route::get('/my-orders', Account\MyOrders\Index::class)->name('account.my-orders.index');
@@ -39,7 +39,7 @@ Route::get('/login', Auth\Login::class)->name('login');
         // my password
         Route::get('/password', Account\Password\Index::class)->name('account.password');
     });
-// });
+});
 
 // homepage
 Route::get('/', Web\Home\Index::class)->name('home');
@@ -52,3 +52,6 @@ Route::get('/category/{slug}', Web\Category\Show::class)->name('web.category.sho
 
 // product show
 Route::get('/products/{slug}', Web\Product\Show::class)->name('web.product.show');
+
+// cart
+Route::get('/cart', Web\Cart\Index::class)->name('web.cart.index')->middleware('auth:customer');

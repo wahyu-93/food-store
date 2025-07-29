@@ -44,7 +44,7 @@ class BtnAddToCartFull extends Component
         session()->flash('success', 'Produk ditambahkan ke keranjang');
 
         //redirect to cart
-        return $this->redirect('/cart', navigate: true);
+        return $this->redirect(route('web.cart.index'), navigate: true);
     }
 
     public function render()
