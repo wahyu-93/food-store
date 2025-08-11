@@ -4,7 +4,11 @@
             <div class="text-center bg-white rounded-menu p-1 shadow-sm">
                 <ul class="nav nav-justified w-100">
                     <li class="nav-item">
-                        <a href="/" class="nav-link text-dark fw-bold" wire:navigate>
+                        <a href="/"
+                            wire:navigate
+                            class="nav-link fw-bold d-flex flex-column align-items-center px-3 py-2 rounded-pill transition
+                                    {{ request()->is('/') ? 'bg-primary text-white shadow-sm' : 'text-dark' }}"
+                            style="transition: all 0.3s ease;">
                             <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-house"
                                 fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd"
@@ -18,7 +22,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/account/my-orders" class="nav-link text-dark fw-bold" wire:navigate>
+                        <a href="/account/my-orders" 
+                            wire:navigate  
+                            class="nav-link fw-bold d-flex flex-column align-items-center px-3 py-2 rounded-pill transition
+                                    {{ request()->is('account/my-orders') ? 'bg-primary text-white shadow-sm' : 'text-dark' }}"
+                            style="transition: all 0.3s ease;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"
                                 class="bi bi-bag" viewBox="0 0 16 16">
                                 <path
@@ -26,7 +34,11 @@
                             </svg><span class="small d-block mt-1">My Orders</span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="/cart" class="nav-link text-dark fw-bold" wire:navigate>
+                        <a href="/cart" 
+                            wire:navigate
+                            class="nav-link fw-bold d-flex flex-column align-items-center px-3 py-2 rounded-pill transition
+                                    {{ request()->is('cart') ? 'bg-primary text-white shadow-sm' : 'text-dark' }}"
+                            style="transition: all 0.3s ease;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"
                                 class="bi bi-cart" viewBox="0 0 16 16">
                                 <path
@@ -36,8 +48,13 @@
                             <span class="small d-block mt-1">Carts</span>
                         </a>
                     </li>
+                    @if(!auth()->guard('customer')->user())
                     <li class="nav-item dropup">
-                        <a href="/login" class="nav-link text-dark fw-bold" wire:navigate>
+                        <a href="/login" 
+                            wire:navigate
+                            class="nav-link fw-bold d-flex flex-column align-items-center px-3 py-2 rounded-pill transition
+                                    {{ request()->is('account/my-profile') ? 'bg-primary text-white shadow-sm' : 'text-dark' }}"
+                            style="transition: all 0.3s ease;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"
                                 class="bi bi-person" viewBox="0 0 16 16">
                                 <path
@@ -46,6 +63,7 @@
                             <span class="small d-block mt-1">Account</span>
                         </a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>

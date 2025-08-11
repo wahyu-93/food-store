@@ -19,7 +19,7 @@
     <div class="d-flex justify-content-evenly">
         <div>
             <a href="/account/my-orders" wire:navigate class="text-decoration-none">
-                <div class="card rounded">
+                <div class="card rounded {{ request()->is('account/my-orders') ? 'border-primary' : '' }}">
                     <div class="card-body pb-1">
                         <h6 class="small fw-bold">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"
@@ -35,7 +35,7 @@
         </div>
         <div>
             <a href="/account/my-profile" wire:navigate class="text-decoration-none">
-                <div class="card rounded">
+                  <div class="card rounded {{ request()->is('account/my-profile') ? 'border-primary' : '' }}">
                     <div class="card-body pb-1">
                         <h6 class="small fw-bold">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"
@@ -51,7 +51,7 @@
         </div>
         <div>
             <a href="/account/password" wire:navigate class="text-decoration-none">
-                <div class="card rounded">
+                <div class="card rounded {{ request()->is('account/password') ? 'border-primary' : '' }}">
                     <div class="card-body pb-1">
                         <h6 class="small fw-bold">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor"

@@ -13,6 +13,7 @@ class CallbackController extends Controller
      */
     public function __invoke(Request $request)
     {
+        dd($request);   
         $payload      = $request->getContent();
         $notification = json_decode($payload);
       

@@ -10,9 +10,10 @@
                     </form>
                 </div>
             </div>
+            
             <div class="col-2 col-md-2">
                 <div class="text-end">
-                    <a href="/login" wire:navigate>
+                    <a  @if(!auth()->guard('customer')->user()) href="/login" @else href="{{ route('account.my-profile') }}" @endif wire:navigate>
                         @php
                             $image = auth()->guard('customer')->check() && auth()->guard('customer')->user()->image 
                                 ? asset('/storage/avatars/' . auth()->guard('customer')->user()->image) 

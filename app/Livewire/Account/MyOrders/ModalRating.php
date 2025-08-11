@@ -35,7 +35,7 @@ class ModalRating extends Component
         // lempar ke route my-orders.show
         $check_rating = Rating::query()
                             ->where('product_id', $this->item->product->id)
-                            ->where('customer_id', auth()->guard('customer')->user()-id)
+                            ->where('customer_id', auth()->guard('customer')->user()->id)
                             ->first();
         if($check_rating){
             session()->flash('warning', 'Anda sudah pernah memberikan rating untuk product ini');
