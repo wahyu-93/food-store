@@ -46,6 +46,7 @@ Route::get('/', Web\Home\Index::class)->name('home');
 
 // products
 Route::get('/products', Web\Product\Index::class)->name('web.product.index');
+Route::get('/products-populer', Web\Product\ProductPopuler::class)->name('web.product.populer');
 
 // category show
 Route::get('/category/{slug}', Web\Category\Show::class)->name('web.category.show');
