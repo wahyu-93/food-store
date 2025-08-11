@@ -152,18 +152,29 @@ Food Store - Eat Your Favorite Foods
 @push('freJs')
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-        new Swiper(".mySwiper", {
-            slidesPerView: 3, // bisa kamu ubah jadi auto kalau mau fleksibel
-            spaceBetween: 20,
-            scrollbar: {
-                el: ".swiper-scrollbar",
-                hide: false,
-            },
-            breakpoints: {
-                640: { slidesPerView: 2 },
-                768: { slidesPerView: 3 },
-                1024: { slidesPerView: 4 },
-            }
-        });
+        function initSwiper() {
+            new Swiper(".mySwiper", {
+                slidesPerView: 3,
+                spaceBetween: 20,
+                scrollbar: {
+                    el: ".swiper-scrollbar",
+                    hide: false,
+                },
+                preventClicks: false,
+                preventClicksPropagation: false,
+                touchStartPreventDefault: false,
+                breakpoints: {
+                    640: { slidesPerView: 2 },
+                    768: { slidesPerView: 3 },
+                    1024: { slidesPerView: 4 },
+                }
+            });
+        }
+
+        // Saat halaman pertama kali load
+        document.addEventListener("DOMContentLoaded", initSwiper);
+
+        // Saat Livewire melakukan navigasi (wire:navigate)
+        document.addEventListener("livewire:navigated", initSwiper);
     </script>
 @endpush
