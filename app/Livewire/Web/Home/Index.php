@@ -36,6 +36,7 @@ class Index extends Component
             'categories' => Category::latest()->get(), //categories
             'popularProducts' => $this->getPopularProducts(),
             'latestProducts'  => $this->getLatestProducts(),
+            'cart'  => '99',
         ]);
     }
 }

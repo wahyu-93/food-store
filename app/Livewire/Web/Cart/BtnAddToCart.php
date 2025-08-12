@@ -33,8 +33,11 @@ class BtnAddToCart extends Component
                     'product_id'    => $this->product_id,
                     'qty'           => 1
                 ]);
-           }
+
+            }
+        
         // session flash 
+         $this->dispatch('cartUpdated');
         session()->flash('success', 'Produck Berhasil Ditambahkan Ke keranjang');
 
         // redirect

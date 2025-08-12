@@ -19,6 +19,7 @@ class BtnDelete extends Component
         $cart = Cart::find($this->cart_id);
         $cart->delete();
 
+        $this->dispatch('cartUpdated');
         session()->flash('success', 'Keranjang Berhasil Dihapus');
 
         return $this->redirect(route('web.cart.index'), navigate:true);

@@ -19,7 +19,7 @@ class Show extends Component
         $category = Category::with('products')
             ->where('slug', $this->slug)
             ->firstOrFail();
-        dd($category->products()->latest()->get());
+
         return view('livewire.web.category.show', compact('category'));
     }
 }

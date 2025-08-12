@@ -23,6 +23,7 @@ class BtnIncrement extends Component
         $cart->increment('qty');
 
         // session flush
+        $this->dispatch('cartUpdated');
         session()->flash('success', 'Qty Keranjang Berhasil Ditambahkan');
 
         // redirect

@@ -22,6 +22,7 @@ class BtnDecrement extends Component
         $cart = Cart::find($this->cart_id);
         $cart->decrement('qty');
 
+        $this->dispatch('cartUpdated');
         session()->flash('success', 'Qty Keranjang Berhasil Dikurangi');
 
         return $this->redirect(route('web.cart.index'),navigate:true);        
