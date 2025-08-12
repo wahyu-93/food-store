@@ -5,6 +5,7 @@ namespace App\Livewire\Web\Home;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slider;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Index extends Component
@@ -36,7 +37,6 @@ class Index extends Component
             'categories' => Category::latest()->get(), //categories
             'popularProducts' => $this->getPopularProducts(),
             'latestProducts'  => $this->getLatestProducts(),
-            'cart'  => '99',
         ]);
     }
 }

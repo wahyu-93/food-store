@@ -9,12 +9,7 @@ use Livewire\Component;
 class CartBadge extends Component
 {
     public $count;
-
-    protected $listeners = [
-        'cartUpdated'   => 'updateCount',
-        'cartCleared'   => 'clearCount'
-    ];
-
+   
     public function mount()
     {
         $this->updateCount();
@@ -27,8 +22,8 @@ class CartBadge extends Component
 
     public function updateCount()
     {
-        if(Auth::check()){
-            $this->count = Cart::where('customer_id', Auth::id())->count();
+        if(auth()->guard('customer')->check()){
+            $this->count = Cart::where('customer_id', auth()->guard('customer')->user()->id)->count();
         }
         else {
             $this->count = 0;
